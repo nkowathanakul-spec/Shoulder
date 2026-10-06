@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Shoulder · Sports Orthopaedics Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --accent:#c0392b;
+  --teal:#1a7a6e;
+  --paper:#f8f5f0;
+  --ink:#1a1814;
+  --muted:#5c5850;
+  --rule:#d4cec6;
+  --highlight:#fff7e6;
+  --warn:#8b4513;
+  --surface:#f0ece4;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Source Serif 4",Georgia,serif;
+  background:var(--paper);
+  color:var(--ink);
+  font-size:1.05rem;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.container{max-width:1180px;margin:0 auto;padding:0 36px}
+
+/* ---------- HEADER ---------- */
+header{
+  background:var(--ink);
+  color:var(--paper);
+  padding:64px 0 52px;
+  border-bottom:6px double #4a3d2e;
+}
+header .container{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end}
+.eyebrow{
+  font-family:"DM Mono",monospace;
+  font-size:0.75rem;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:#a89478;
+  margin-bottom:18px;
+}
+h1{
+  font-family:"Playfair Display",Georgia,serif;
+  font-style:italic;
+  font-weight:900;
+  font-size:4.4rem;
+  line-height:0.95;
+  letter-spacing:-0.01em;
+}
+h1 .sub{
+  display:block;
+  font-style:normal;
+  font-weight:400;
+  font-family:"Source Serif 4",serif;
+  font-size:1.05rem;
+  color:#cdbfa6;
+  letter-spacing:0.01em;
+  margin-top:16px;
+  max-width:640px;
+}
+.stats{display:flex;gap:34px;text-align:right}
+.stat .num{
+  font-family:"Playfair Display",serif;
+  font-weight:900;
+  font-size:2.6rem;
+  color:#e8c07a;
+  line-height:1;
+}
+.stat .lbl{
+  font-family:"DM Mono",monospace;
+  font-size:0.68rem;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:#a89478;
+  margin-top:8px;
+}
+
+/* ---------- SOURCE STRIP ---------- */
+.source-strip{
+  background:var(--surface);
+  border-bottom:1px solid var(--rule);
+  padding:14px 0;
+}
+.source-strip .container{
+  display:flex;gap:26px;align-items:center;flex-wrap:wrap;
+  font-family:"DM Mono",monospace;font-size:0.72rem;letter-spacing:0.08em;
+  color:var(--muted);text-transform:uppercase;
+}
+.source-strip b{color:var(--accent);font-weight:500}
+
+/* ---------- REGIONS ---------- */
+main{padding:56px 0 30px}
+.region-block{margin-bottom:60px}
+.region-header{
+  display:flex;align-items:baseline;gap:20px;
+  border-bottom:2px solid var(--ink);
+  padding-bottom:12px;margin-bottom:28px;
+}
+.region-label{
+  font-family:"DM Mono",monospace;
+  font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--accent);
+}
+.region-title{
+  font-family:"Playfair Display",serif;
+  font-weight:700;font-size:1.9rem;flex:1;
+}
+.region-count{
+  font-family:"DM Mono",monospace;
+  font-size:0.74rem;color:var(--muted);letter-spacing:0.04em;
+}
+
+/* ---------- CARDS ---------- */
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:20px;
+}
+.frac-card{
+  background:#fff;
+  border:1px solid var(--rule);
+  border-radius:4px;
+  padding:22px 22px 18px;
+  display:flex;flex-direction:column;
+  min-height:186px;
+  transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+}
+.frac-card.available:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 26px rgba(26,24,20,0.12);
+  border-color:var(--accent);
+}
+.frac-card.coming{opacity:0.62;background:var(--surface)}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px}
+.card-title{
+  font-family:"Playfair Display",serif;
+  font-weight:700;font-size:1.22rem;line-height:1.2;
+}
+.card-status{
+  font-family:"DM Mono",monospace;
+  font-size:0.64rem;letter-spacing:0.08em;text-transform:uppercase;
+  white-space:nowrap;padding-top:4px;
+}
+.frac-card.available .card-status{color:var(--teal)}
+.frac-card.coming .card-status{color:var(--muted)}
+.card-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+.tag{
+  font-family:"DM Mono",monospace;
+  font-size:0.66rem;letter-spacing:0.03em;
+  background:var(--highlight);
+  border:1px solid #ecdcbf;
+  color:var(--warn);
+  padding:3px 8px;border-radius:3px;
+}
+.card-meta{
+  margin-top:auto;
+  display:flex;gap:16px;
+  font-family:"DM Mono",monospace;font-size:0.7rem;
+  color:var(--muted);letter-spacing:0.03em;
+  padding-top:12px;border-top:1px solid var(--rule);
+}
+.card-link{
+  margin-top:14px;
+  display:inline-flex;align-items:center;gap:7px;
+  align-self:flex-start;
+  font-family:"DM Mono",monospace;font-size:0.78rem;letter-spacing:0.06em;
+  text-transform:uppercase;text-decoration:none;
+  color:var(--accent);font-weight:500;
+}
+.card-link svg{width:11px;height:11px;transition:transform .16s ease}
+.card-link:hover svg{transform:translateX(4px)}
+
+/* ---------- FOOTER ---------- */
+footer{
+  background:var(--ink);color:var(--paper);
+  padding:40px 0;margin-top:30px;
+  border-top:6px double #4a3d2e;
+}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.footer-logo{font-family:"Playfair Display",serif;font-style:italic;font-weight:700;font-size:1.2rem}
+.footer-note{font-family:"DM Mono",monospace;font-size:0.7rem;color:#a89478;letter-spacing:0.06em}
+
+.region-open{font-family:"DM Mono",monospace;font-size:0.74rem;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;color:var(--accent);font-weight:500;white-space:nowrap}
+.region-open:hover{text-decoration:underline}
+.region-lead{color:var(--muted);margin:-14px 0 24px;max-width:780px}
+.card-desc{color:var(--muted);font-size:0.96rem;margin-bottom:14px}
+.backlink{font-family:"DM Mono",monospace;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:#a89478;text-decoration:none}
+.backlink:hover{color:#e8c07a}
+@media(max-width:720px){
+  header .container{grid-template-columns:1fr}
+  h1{font-size:3rem}
+  .stats{text-align:left}
+  .region-header{flex-wrap:wrap;gap:8px}
+}
+main.container{padding-top:56px}
+.frac-card.available{box-shadow:0 2px 0 rgba(26,24,20,0.03)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div>
+      <div class="eyebrow">Sports Orthopaedics · Resident Education Series</div>
+      <h1>The Shoulder
+        <span class="sub">From examination to arthroscopy — how to examine the athlete's shoulder test by test, then how to read and repair it through the scope.</span>
+      </h1>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="num">2</div><div class="lbl">Modules</div></div>
+      <div class="stat"><div class="num">34</div><div class="lbl">Exam Tests</div></div>
+      <div class="stat"><div class="num">20</div><div class="lbl">Video Clips</div></div>
+      <div class="stat"><div class="num">7</div><div class="lbl">Scope Sections</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="source-strip">
+  <div class="container">
+    <span>Sourced from</span>
+    <span><b>Campbell's</b> · Operative Orthopaedics, 14th ed.</span>
+    <span><b>Rockwood &amp; Green</b> · Fractures in Adults, 10th ed.</span>
+    <span><b>Kibler 2013</b> · Scapular Summit</span>
+    <span>For educational use only</span>
+  </div>
+</div>
+
+<main class="container">
+
+  <div class="region-block">
+    <div class="region-header">
+      <span class="region-label">Module 01</span>
+      <h2 class="region-title">Physical Examination · Sports</h2>
+      <span class="region-count">1 module</span>
+    </div>
+    <div class="card-grid">
+      <div class="frac-card available">
+        <div class="card-top">
+          <div class="card-title">Shoulder Physical Examination</div>
+          <div class="card-status">● Available</div>
+        </div>
+        <p class="card-desc">34 special tests with technique, rationale and accuracy, normal range of motion, anatomy figures and 20 demonstration clips.</p>
+        <div class="card-tags">
+          <span class="tag">Impingement</span><span class="tag">Rotator Cuff</span><span class="tag">Labrum</span><span class="tag">Instability</span><span class="tag">Scapula</span><span class="tag">ROM</span>
+        </div>
+        <div class="card-meta"><span>Campbell Ch. 46–47</span><span>R&amp;G Ch. 35</span></div>
+        <a class="card-link" href="exam.html">Open <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h8M6 2l3 3-3 3"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="region-block">
+    <div class="region-header">
+      <span class="region-label">Module 02</span>
+      <h2 class="region-title">Arthroscopy &amp; Injuries</h2>
+      <a class="region-open" href="arthroscopy.html">Open full module →</a>
+    </div>
+    <p class="region-lead">Portals, the diagnostic circuit and the core reconstructions — read the joint like a clock.</p>
+    <div class="card-grid">
+      <div class="frac-card available">
+        <div class="card-top">
+          <div class="card-title">Anatomy &amp; Portals</div>
+          <div class="card-status">● Available</div>
+        </div>
+        <p class="card-desc">Posterior, anterior, lateral, 7-o'clock and Neviaser portals with structures at risk.</p>
+        <div class="card-tags"><span class="tag">Posterior soft spot</span><span class="tag">SSN</span><span class="tag">Axillary n.</span></div>
+        <div class="card-meta"><span>Campbell Ch. 52</span><span>Figs 52.3–4</span></div>
+        <a class="card-link" href="arthroscopy.html#portals">Open <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h8M6 2l3 3-3 3"/></svg></a>
+      </div>
+      <div class="frac-card available">
+        <div class="card-top">
+          <div class="card-title">Diagnostic Arthroscopy</div>
+          <div class="card-status">● Available</div>
+        </div>
+        <p class="card-desc">The 15-point circuit, laxity signs and normal variants not to repair.</p>
+        <div class="card-tags"><span class="tag">15-point</span><span class="tag">Buford</span><span class="tag">Sublabral hole</span></div>
+        <div class="card-meta"><span>Campbell Ch. 52</span><span>Fig 52.5</span></div>
+        <a class="card-link" href="arthroscopy.html#diagnostic">Open <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h8M6 2l3 3-3 3"/></svg></a>
+      </div>
+      <div class="frac-card available">
+        <div class="card-top">
+          <div class="card-title">Subacromial Impingement</div>
+          <div class="card-status">● Available</div>
+        </div>
+        <p class="card-desc">Imaging, acromial morphology, critical shoulder angle and decompression.</p>
+        <div class="card-tags"><span class="tag">Bigliani I–III</span><span class="tag">CSA</span><span class="tag">Acromioplasty</span></div>
+        <div class="card-meta"><span>Campbell Ch. 46</span><span>Fig 46.11</span></div>
+        <a class="card-link" href="arthroscopy.html#impingement">Open <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h8M6 2l3 3-3 3"/></svg></a>
+      </div>
+      <div class="frac-card available">
+        <div class="card-top">
+          <div class="card-title">Rotator Cuff Repair</div>
+          <div class="card-status">● Available</div>
+        </div>
+        <p class="card-desc">Ellman partial tears, single vs double row, retracted and irreparable tears.</p>
+        <div class="card-tags"><span class="tag">Ellman</span><span class="tag">DR / TE</span><span class="tag">Goutallier</span></div>
+        <div class="card-meta"><span>Campbell Ch. 52</span><span>Fig 52.46</span></div>
+        <a class="card-link" href="arthroscopy.html#cuff">Open <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h8M6 2l3 3-3 3"/></svg></a>
+      </div>
+      <div class="frac-card available">
+        <div class="card-top">
+          <div class="card-title">Instability — Bankart &amp; SLAP</div>
+          <div class="card-status">● Available</div>
+        </div>
+        <p class="card-desc">Anchor technique, the bone-loss threshold and SLAP types by age.</p>
+        <div class="card-tags"><span class="tag">Bankart</span><span class="tag">Latarjet</span><span class="tag">SLAP II–IV</span></div>
+        <div class="card-meta"><span>Campbell Ch. 52</span></div>
+        <a class="card-link" href="arthroscopy.html#instability">Open <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h8M6 2l3 3-3 3"/></svg></a>
+      </div>
+      <div class="frac-card available">
+        <div class="card-top">
+          <div class="card-title">AC Joint &amp; Distal Clavicle</div>
+          <div class="card-status">● Available</div>
+        </div>
+        <p class="card-desc">Indications and indirect Mumford resection width.</p>
+        <div class="card-tags"><span class="tag">Mumford</span><span class="tag">5–8 mm</span><span class="tag">Lidocaine block</span></div>
+        <div class="card-meta"><span>Campbell Ch. 52</span><span>Fig 52.53</span></div>
+        <a class="card-link" href="arthroscopy.html#acj">Open <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h8M6 2l3 3-3 3"/></svg></a>
+      </div>
+      <div class="frac-card available">
+        <div class="card-top">
+          <div class="card-title">Neurovascular Safety</div>
+          <div class="card-status">● Available</div>
+        </div>
+        <p class="card-desc">Quadrilateral space, traction neurapraxia and fluid extravasation.</p>
+        <div class="card-tags"><span class="tag">Quadrilateral space</span><span class="tag">Traction</span><span class="tag">Fluid</span></div>
+        <div class="card-meta"><span>Campbell Ch. 46 &amp; 52</span><span>Fig 46.20</span></div>
+        <a class="card-link" href="arthroscopy.html#safety">Open <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h8M6 2l3 3-3 3"/></svg></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-logo">The Shoulder</div>
+    <div class="footer-note">Campbell 14e Ch 46, 47, 52 · R&amp;G 10e Ch 35 · Kibler 2013 · Clips: Physiotutors (YouTube)</div>
+  </div>
+</footer>
+
+</body>
+</html>
